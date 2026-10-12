@@ -2,6 +2,7 @@
 // Сангүй Node.js 18+
 // Ажиллуулах: node server.js
 // Local: http://localhost:3000
+// Нийтийн API-ийн JSDoc: lib/skillswap-client.js (TypeDoc -> public/api)
 
 const http = require('http');
 const fs = require('fs');
@@ -22,6 +23,8 @@ const EVENTS = [
 ];
 
 // ---------- Нууц үг (NFR-03: scrypt hash) ----------
+// hashPw, checkPw нь нийтийн API-д орохгүй. Нууц үгийн давс, hash-ийг
+// HTTP хариунд гаргахгүй. Клиент зөвхөн /auth/register, /auth/login дуудна.
 
 const hashPw = (
   pw,
@@ -39,6 +42,8 @@ const checkPw = (pw, u) => {
 };
 
 // ---------- Өгөгдөл ----------
+// TODO(#601): Санах ойн store-ийг тогтвортой сангаар солих. Restart хийхэд session, credit, audit устана.
+// mk, users, sessions болон бусад store нь дотоод төлөв. Нийтийн API биш.
 
 const wide = [
   {
@@ -161,6 +166,12 @@ const rid = (p) =>
   `${p}_${crypto.randomBytes(3).toString('hex')}`;
 
 // ---------- Туслахууд ----------
+// HttpError, err, send, readBody, need, b64, signJwt, verifyJwt,
+// authUser, adminUser, log, led, stats, refresh, pub, loadSession, rid
+// нь route-уудын дотоод хэрэгсэл. TypeDoc-д оруулаагүй. Нийтийн
+// гэрээ нь lib/skillswap-client.js дээрх SkillSwapClient.
+
+
 
 class HttpError extends Error {
   constructor(status, code, message) {
@@ -420,6 +431,8 @@ const loadSession = (id, me) => {
 };
 
 // ---------- Notification / Calendar / Webhook ----------
+// TODO(#602): FCM болон Google Calendar нь симуляци. Жинхэнэ илгээлт, event sync холбоогүй.
+// emit, onConfirmed нь дотоод. Клиент listNotifications, subscribeWebhook дуудна.
 
 function emit(type, session, text) {
   for (const userId of [
@@ -507,6 +520,8 @@ function onConfirmed(session) {
 }
 
 // ---------- Route system ----------
+// route() нь дотоод бүртгэл. Anonymous handler-ууд TypeDoc тэмдэгт биш.
+// Доорх зам бүрийн JSDoc нь lib/skillswap-client.js дээр.
 
 const routes = [];
 
@@ -1212,6 +1227,8 @@ route(
         'Зөвхөн зөвшөөрөгдсөн (confirmed) session-д check-in хийнэ.'
       );
     }
+
+    // TODO(#603): Check-in-ийг session-ы цагийн цонхоор хязгаарлаагүй. Демод өнгөрсөн цагийг зөвшөөрдөг.
 
     session.checkins[
       body.role
@@ -2005,6 +2022,8 @@ route(
 );
 
 // ---------- Home page ----------
+// /, /openapi.yaml, /docs, /swagger, /redoc нь Lab 5-ын баримтын хуудас.
+// Домэйн API биш тул SkillSwapClient-д оруулаагүй.
 
 route(
   'GET',

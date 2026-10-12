@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "module": "commonjs",
+    "target": "ES2022",
+    "moduleResolution": "node",
+    "strict": false
+  },
+  "include": ["lib/**/*.js", "docs/sprint06/**/*.js"]
+}

@@ -1,0 +1,30 @@
+# SkillSwap баримт: TypeDoc (JSDoc) болон Lab 5-ын Redoc/Swagger.
+# GitLab Pages `public/` хавтсыг авна. typedoc анхааруулга дээр зогсоно.
+
+stages:
+  - test
+  - deploy
+
+audit:
+  stage: test
+  image: node:20
+  script:
+    - npm ci
+    - node docs/sprint06/test_ai_hallucinations.js
+
+pages:
+  stage: deploy
+  image: node:20
+  script:
+    - npm ci
+    - npx typedoc --treatWarningsAsErrors
+    - mkdir -p public/redoc public/swagger
+    - npx @redocly/cli build-docs openapi.yaml -o public/redoc/index.html
+    - cp openapi.yaml public/swagger/openapi.yaml
+    - cp swagger/index.html public/swagger/index.html
+    - node docs/sprint06/write-pages-index.js
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

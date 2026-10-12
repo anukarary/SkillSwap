@@ -1,6 +1,17 @@
 {
+  "name": "skillswap",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "docs": "typedoc --treatWarningsAsErrors",
+    "test:docs": "node docs/sprint06/test_ai_hallucinations.js"
+  },
   "dependencies": {
     "redoc-express": "^2.1.3",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "typedoc": "^0.28.20",
+    "typescript": "^5.9.3"
   }
 }

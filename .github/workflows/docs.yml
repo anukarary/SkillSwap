@@ -27,15 +27,25 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install
+        run: npm ci
+
       - name: Lint spec
         run: npx @redocly/cli lint openapi.yaml
 
-      - name: Build docs
+      - name: Docstring hallucination test
+        run: node docs/sprint06/test_ai_hallucinations.js
+
+      - name: Build TypeDoc
+        run: npx typedoc --treatWarningsAsErrors
+
+      - name: Build OpenAPI docs
         run: |
           mkdir -p public/redoc public/swagger
           npx @redocly/cli build-docs openapi.yaml -o public/redoc/index.html
           cp openapi.yaml public/swagger/openapi.yaml
           cp swagger/index.html public/swagger/index.html
+          node docs/sprint06/write-pages-index.js
 
       - uses: actions/upload-pages-artifact@v3
         with:

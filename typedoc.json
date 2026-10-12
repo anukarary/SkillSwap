@@ -1,0 +1,9 @@
+{
+  "entryPoints": ["lib/skillswap-client.js"],
+  "out": "public/api",
+  "name": "SkillSwap API",
+  "excludePrivate": true,
+  "treatWarningsAsErrors": true,
+  "readme": "none",
+  "excludeExternals": true
+}
