@@ -1,6 +1,6 @@
 # Bhatti 5 зарчмын аудит — Sprint 06
 
-Модуль: `SkillSwapSessionApi` (`docs/sprint06/manual_docstring.js` болон `ai_docstring.js`).
+Модуль: `SkillSwapSessionApi` (`docs/lab06/manual_docstring.js` болон `ai_docstring.js`).
 
 Ноорог: AI. Зассан хувилбар: гараар бичсэн docstring, `lib/skillswap-client.js` дотор нэгтгэсэн.
 

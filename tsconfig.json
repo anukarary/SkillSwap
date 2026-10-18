@@ -8,5 +8,5 @@
     "moduleResolution": "node",
     "strict": false
   },
-  "include": ["lib/**/*.js", "docs/sprint06/**/*.js"]
+  "include": ["lib/**/*.js", "docs/lab06/**/*.js"]
 }

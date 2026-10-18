@@ -5,44 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SkillSwap</title>
 <style>
-:root{--ink:#16202b;--mute:#5d6b78;--paper:#eef3f2;--panel:#fff;--line:#d5dedc;--accent:#0e7c6b;--accent-ink:#fff;--credit:#b7791f;--danger:#b42318;--ok:#157347}
-@media (prefers-color-scheme:dark){:root{--ink:#e6edf0;--mute:#94a3ad;--paper:#10181c;--panel:#18232a;--line:#2b3a42;--accent:#35b79f;--accent-ink:#06211c;--credit:#e0a84a;--danger:#f08a7e;--ok:#6fcf97}}
+:root{--ink:#1c1917;--mute:#6b6258;--paper:#f6f1e8;--panel:#fffdf8;--line:#e4d9c8;--accent:#0f6e56;--accent-ink:#f4fff9;--credit:#9a5b12;--danger:#9f2d22;--ok:#0f6b45;--shadow:0 10px 30px rgba(70,48,20,.06)}
+@media (prefers-color-scheme:dark){:root{--ink:#f3eee6;--mute:#b3a89c;--paper:#141210;--panel:#211c17;--line:#3a322a;--accent:#3dbea0;--accent-ink:#06211c;--credit:#e2b15a;--danger:#f0a097;--ok:#8ed7ae;--shadow:none}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
 button,input,select,textarea{font:inherit;color:inherit}
-.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
-aside{background:var(--panel);border-right:1px solid var(--line);padding:20px 16px;display:flex;flex-direction:column;gap:6px}
-.brand{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
-.credit{margin:6px 0 14px;padding:12px;border:1px solid var(--line);border-radius:6px}
-.credit b{display:block;font-size:34px;line-height:1.1;color:var(--credit);font-variant-numeric:tabular-nums}
+.app{display:grid;grid-template-columns:272px 1fr;min-height:100vh}
+aside{background:#10241e;color:#f4f7f4;border-right:0;padding:28px 18px;display:flex;flex-direction:column;gap:8px}
+aside .meta{color:#c9d5cf}
+aside .btn{background:transparent;color:#f4f7f4;border-color:#35574c}
+aside .credit{background:#18332b;border-color:#2c4a40}
+.brand{font-family:Georgia,"Palatino Linotype",serif;font-size:28px;font-weight:700;letter-spacing:-.03em;margin:0 0 4px}
+.who{margin:0 0 8px}
+.credit{margin:4px 0 16px;padding:14px 14px 12px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(15,110,86,.08),transparent)}
+.credit b{display:block;font-size:40px;line-height:1;color:var(--credit);font-variant-numeric:tabular-nums;font-family:Georgia,"Palatino Linotype",serif}
 .credit small{color:var(--mute)}
-nav button{display:block;width:100%;text-align:left;padding:8px 10px;border:0;background:none;border-radius:6px;cursor:pointer}
+nav{display:grid;gap:4px}
+nav button{display:block;width:100%;text-align:left;padding:10px 12px;border:0;background:none;border-radius:10px;cursor:pointer}
 nav button[aria-current=true]{background:var(--accent);color:var(--accent-ink)}
-nav button:hover:not([aria-current=true]){background:var(--paper)}
-main{padding:24px;max-width:860px;width:100%}
-h2{margin:0 0 14px;font-size:22px;letter-spacing:-.01em}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:12px}
+nav button:hover:not([aria-current=true]){background:#1a332b}
+main{padding:32px 36px 48px;max-width:920px;width:100%}
+h2{margin:0 0 16px;font-family:Georgia,"Palatino Linotype",serif;font-size:30px;font-weight:600;letter-spacing:-.03em}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
-label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mute)}
-input,select,textarea{padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--panel);min-width:0}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mute);flex:1 1 140px}
+input,select,textarea{padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);min-width:0}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.btn{padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel);cursor:pointer}
+.btn{padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel);cursor:pointer}
 .btn:hover{border-color:var(--accent)}
 .btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn.bad{color:var(--danger)}
-.tag{display:inline-block;padding:1px 8px;border-radius:10px;border:1px solid var(--line);font-size:12px;color:var(--mute)}
-.tag.completed{color:var(--ok);border-color:var(--ok)}.tag.cancelled,.tag.no_show_reported{color:var(--danger);border-color:var(--danger)}
+.btn:disabled{opacity:.55;cursor:default}
+.tag{display:inline-block;padding:2px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--mute);background:var(--paper)}
+.tag.completed,.tag.confirmed{color:var(--ok);border-color:var(--ok);background:transparent}
+.tag.cancelled,.tag.no_show_reported{color:var(--danger);border-color:var(--danger);background:transparent}
 .meta{color:var(--mute);font-size:13px}
 .head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.chat{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
-.chat p{margin:2px 0}
-table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
-#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 14px;border-radius:6px;display:none;max-width:90vw}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chat{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.chat p{margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:8px 4px;border-bottom:1px solid var(--line)}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;display:none;max-width:min(520px,90vw)}
 #toast.err{background:var(--danger);color:#fff}
-.login{max-width:420px;margin:8vh auto;padding:0 16px}
-.demo{display:grid;gap:6px;margin:10px 0}
-@media (max-width:720px){.app{grid-template-columns:1fr}aside{flex-direction:row;flex-wrap:wrap;align-items:center;border-right:0;border-bottom:1px solid var(--line)}.credit{margin:0}nav{display:flex;flex-wrap:wrap}main{padding:14px}}
+.gate{min-height:100vh;display:grid;grid-template-columns:1.15fr .85fr}
+.gate-story{background:#10241e;color:#f6f3ec;padding:72px 64px;display:flex;flex-direction:column;justify-content:flex-end;gap:18px}
+.gate-story h1{margin:0;max-width:11ch;font-family:Georgia,"Palatino Linotype",serif;font-size:64px;font-weight:600;line-height:.98;letter-spacing:-.045em}
+.gate-story p{margin:0;max-width:36ch;font-size:18px;color:#d5e4dc}
+.gate-points{display:flex;gap:18px;margin:8px 0 0;padding:0;list-style:none;color:#b7cfc4}
+.gate-panel{display:flex;flex-direction:column;justify-content:center;padding:56px 64px;background:#fffdf8}
+.kind{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 22px}
+.kind button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.gate-panel h2{margin-bottom:6px}
+.stack{display:grid;gap:12px}
+.stack[hidden],.linkish[hidden]{display:none}
+.stack .btn.pri{width:100%;border-radius:12px;padding:12px}
+.linkish{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-align:left}
+@media (max-width:860px){.gate{grid-template-columns:1fr}.gate-story{padding:36px 24px;min-height:280px}.gate-story h1{font-size:42px}.gate-panel{padding:28px 20px}}
+@media (max-width:720px){.app{grid-template-columns:1fr}aside{flex-direction:row;flex-wrap:wrap;align-items:center;padding:16px}.credit{margin:0;min-width:120px}nav{display:flex;flex-wrap:wrap}nav button:hover:not([aria-current=true]){background:#1a332b}main{padding:16px}h2{font-size:26px}}
 </style>
 </head>
 <body>
@@ -69,25 +88,35 @@ const guard = (fn) => async (...a) => { try { await fn(...a); } catch (e) { toas
 
 // ---------- Нэвтрэлт ----------
 function loginView() {
-  $('#root').innerHTML = `<div class="login card"><div class="brand">SkillSwap</div>
-  <p class="meta">Суралцагчаар орж, Франц хэлний цаг захиалаарай.</p>
-  <div class="demo">
-    <button class="btn" data-demo="oyuntsetseg@num.edu.mn">Суралцагчаар орох (Оюунцэцэг)</button>
-    <button class="btn" data-demo="baterdene@num.edu.mn">Заагчаар орох (Бат-Эрдэнэ)</button>
-    <button class="btn" data-demo="temuulen@num.edu.mn">Admin-аар орох (Тэмүүлэн)</button></div>
-  <form id="lf" class="row"><label>Имэйл<input name="email" type="email" required></label>
-  <label>Нууц үг<input name="password" type="password" required></label><button class="btn pri">Нэвтрэх</button></form>
-  <hr><details><summary>Шинээр бүртгүүлэх</summary><form id="rf" class="row" style="margin-top:10px">
-  <label>Нэр<input name="name" required></label><label>Утас<input name="phone" required></label>
-  <label>Имэйл<input name="email" type="email" required></label><label>Нууц үг (8+)<input name="password" type="password" minlength="8" required></label>
-  <label>Заах ур чадвар<input name="skill" placeholder="Жишээ: Гитар"></label><label>Ангилал<input name="category" placeholder="Жишээ: Хөгжим"></label>
-  <button class="btn pri">Бүртгүүлэх</button></form></details></div>`;
+  $('#root').innerHTML = `<div class="gate"><section class="gate-story"><p class="brand">SkillSwap</p>
+  <h1>Ур чадвараа цагаар солилц.</h1>
+  <p>Оюутан, хэрэглэгч өөрийн бүртгэлээр нэвтэрнэ. Заагч хайж, цаг захиалж, credit шилжүүлнэ.</p>
+  <ul class="gate-points"><li>Хайлт</li><li>Цаг</li><li>Credit</li></ul></section>
+  <section class="gate-panel"><div class="kind" role="group" aria-label="Бүртгэлийн төрөл">
+    <button class="btn" type="button" data-kind="student" aria-pressed="true">Оюутан</button>
+    <button class="btn" type="button" data-kind="user" aria-pressed="false">Хэрэглэгч</button></div>
+  <h2 id="auth-title">Нэвтрэх</h2><p class="meta" id="kind-lead">Оюутны бүртгэлээр нэвтрэх.</p>
+  <form id="lf" class="stack"><label>Имэйл<input name="email" type="email" autocomplete="username" required></label>
+  <label>Нууц үг<input name="password" type="password" autocomplete="current-password" required></label>
+  <button class="btn pri">Нэвтрэх</button></form>
+  <p><button class="linkish" type="button" id="to-reg">Бүртгэлгүй юу? Бүртгүүлэх</button></p>
+  <form id="rf" class="stack" hidden><label>Нэр<input name="name" required></label><label>Утас<input name="phone" required></label>
+  <label>Имэйл<input name="email" type="email" required></label><label>Нууц үг<input name="password" type="password" minlength="8" required></label>
+  <label>Заах ур чадвар<input name="skill" placeholder="Байхгүй бол хоосон"></label><label>Ангилал<input name="category" placeholder="Хэл, дизайн"></label>
+  <button class="btn pri">Бүртгүүлэх</button></form>
+  <p><button class="linkish" type="button" id="to-log" hidden>Бүртгэлтэй юу? Нэвтрэх</button></p></section></div>`;
   const enter = guard(async (email, password) => {
     token = (await api('POST', '/auth/login', { email, password })).access_token;
     sessionStorage.setItem('tok', token); await boot();
   });
-  document.querySelectorAll('[data-demo]').forEach((b) => (b.onclick = () => enter(b.dataset.demo, 'your_account_password')));
+  const kinds = [...document.querySelectorAll('[data-kind]')];
+  kinds.forEach((button) => button.onclick = () => {
+    kinds.forEach((item) => item.setAttribute('aria-pressed', item === button));
+    $('#kind-lead').textContent = button.dataset.kind === 'student' ? 'Оюутны бүртгэлээр нэвтрэх.' : 'Хэрэглэгчийн бүртгэлээр нэвтрэх.';
+  });
   $('#lf').onsubmit = (e) => { e.preventDefault(); const f = new FormData(e.target); enter(f.get('email'), f.get('password')); };
+  $('#to-reg').onclick = () => { $('#lf').hidden = true; $('#to-reg').hidden = true; $('#rf').hidden = false; $('#to-log').hidden = false; $('#auth-title').textContent = 'Бүртгүүлэх'; };
+  $('#to-log').onclick = () => { $('#rf').hidden = true; $('#to-log').hidden = true; $('#lf').hidden = false; $('#to-reg').hidden = false; $('#auth-title').textContent = 'Нэвтрэх'; };
   $('#rf').onsubmit = guard(async (e) => {
     e.preventDefault(); const f = Object.fromEntries(new FormData(e.target));
     await api('POST', '/auth/register', { name: f.name, phone: f.phone, email: f.email, password: f.password,
@@ -100,7 +129,7 @@ function loginView() {
 async function boot() {
   try { me = await api('GET', '/me'); } catch { token = null; sessionStorage.removeItem('tok'); return loginView(); }
   $('#root').innerHTML = `<div class="app"><aside><div class="brand">SkillSwap</div>
-  <div class="meta">${esc(me.name)}</div><div class="credit"><b id="bal">–</b><small id="frz"></small></div>
+  <div class="meta who">${esc(me.name)}</div><div class="credit"><b id="bal">–</b><small id="frz"></small></div>
   <nav id="nav"></nav><div style="flex:1"></div><button class="btn" id="out">Гарах</button></aside><main id="main"></main></div>`;
   const tabs = [['search', 'Хайлт'], ['sessions', 'Миний session'], ['credits', 'Credit'], ['notes', 'Мэдэгдэл'], ...(me.role === 'admin' ? [['admin', 'Admin']] : [])];
   if (me.role === 'admin') tab = 'admin';
@@ -111,7 +140,7 @@ async function boot() {
   show();
 }
 async function show() {
-  document.querySelectorAll('#nav button').forEach((b) => b.setAttribute('aria-current', b.dataset.tab === tab));
+  document.querySelectorAll('#nav button').forEach((b) => b.toggleAttribute('aria-current', b.dataset.tab === tab));
   try {
     const bal = await api('GET', '/credits/balance');
     $('#bal').textContent = bal.balance; $('#frz').textContent = bal.frozen ? `credit, царцсан ${bal.frozen}` : 'credit';
@@ -123,7 +152,7 @@ async function show() {
 const views = {};
 views.search = async () => {
   $('#main').innerHTML = `<h2>Заагч хайх</h2><form id="sf" class="card row">
-  <label>Ур чадвар<input name="skill" value="${esc(cache.skill ?? 'Франц хэл')}"></label>
+  <label>Ур чадвар<input name="skill" value="${esc(cache.skill || '')}" placeholder="Хайх ур чадвар"></label>
   <label>Ангилал<select name="category"><option value="">Бүгд</option><option>Хэл</option><option>Программчлал</option><option>Дизайн</option></select></label>
   <label>Хамгийн бага үнэлгээ<input name="min_rating" type="number" min="0" max="5" step="0.1" value="0" style="width:90px"></label>
   <label>Боломжит цаг<input name="available_from" type="datetime-local"></label><button class="btn pri">Хайх</button></form><div id="res"></div>`;

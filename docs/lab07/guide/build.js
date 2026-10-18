@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = __dirname;
-const outDir = path.join(root, '../../public/guide');
+const outDir = path.join(root, '../../../public/guide');
 
 const pages = [
   { src: 'pages/index.md', out: 'index.html', index: false },

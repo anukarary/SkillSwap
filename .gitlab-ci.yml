@@ -10,7 +10,7 @@ audit:
   image: node:20
   script:
     - npm ci
-    - node docs/sprint06/test_ai_hallucinations.js
+    - node docs/lab06/test_ai_hallucinations.js
 
 pages:
   stage: deploy
@@ -22,8 +22,8 @@ pages:
     - npx @redocly/cli build-docs openapi.yaml -o public/redoc/index.html
     - cp openapi.yaml public/swagger/openapi.yaml
     - cp swagger/index.html public/swagger/index.html
-    - node docs/guide/build.js
-    - node docs/sprint06/write-pages-index.js
+    - node docs/lab07/guide/build.js
+    - node docs/write-pages-index.js
   artifacts:
     paths:
       - public

@@ -34,7 +34,7 @@ jobs:
         run: npx @redocly/cli lint openapi.yaml
 
       - name: Docstring hallucination test
-        run: node docs/sprint06/test_ai_hallucinations.js
+        run: node docs/lab06/test_ai_hallucinations.js
 
       - name: Build TypeDoc
         run: npx typedoc --treatWarningsAsErrors
@@ -45,8 +45,8 @@ jobs:
           npx @redocly/cli build-docs openapi.yaml -o public/redoc/index.html
           cp openapi.yaml public/swagger/openapi.yaml
           cp swagger/index.html public/swagger/index.html
-          node docs/guide/build.js
-          node docs/sprint06/write-pages-index.js
+          node docs/lab07/guide/build.js
+          node docs/write-pages-index.js
 
       - uses: actions/upload-pages-artifact@v3
         with:

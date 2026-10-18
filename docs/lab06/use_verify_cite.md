@@ -1,6 +1,6 @@
 # Use–Verify–Cite: зохиосон API
 
-Sprint 06, SkillSwap. AI ноорог: `docs/sprint06/ai_docstring.js`.
+Lab 06, SkillSwap. AI ноорог: `docs/lab06/ai_docstring.js`.
 Баримт: `server.js` (ажиллаж буй route), `lib/skillswap-client.js` (нийтийн JSDoc).
 
 | # | Use (AI юу гэсэн) | Verify (кодоос юу гарсан) | Cite | Шийдвэр |
@@ -12,6 +12,6 @@ Sprint 06, SkillSwap. AI ноорог: `docs/sprint06/ai_docstring.js`.
 | 5 | Эхний `checkIn` HTTP 204 буцааж credit-ийг хаана. `observer` role байна. | `checkIn` үргэлж `send(res, 200, pub(session))`. Role зөвхөн `teacher` эсвэл `learner`, мөн тухайн id нь дуудагчийнх байх ёстой. | `server.js` check-in handler | 200 болон хоёр талын дүрмийг бичсэн. |
 | 6 | No-show-ыг 24 цагийн дотор, session эхлэхээс өмнө ч мэдээлнэ. | Эхлэхээс өмнө `NO_SHOW_TOO_EARLY`. `end_time`-оос хойш 1 цагаас хэтэрвэл `NO_SHOW_WINDOW_CLOSED`. 24 цаг нь no-show биш, ганц талын check-in `unconfirmed` болох хугацаа. | `server.js` no-show handler, `refresh` | 1 цагийн цонхыг бичсэн. 24 цагийг check-in-ий `unconfirmed` дүрэмд үлдээсэн. |
 
-Шалгалт: `node docs/sprint06/test_ai_hallucinations.js`
+Шалгалт: `node docs/lab06/test_ai_hallucinations.js`
 
 Энэ скрипт AI файлын `async` method-уудыг `SkillSwapClient.prototype` дээр, `@typedef` нэрсийг клиентийн typedef-үүдтэй тусгана. 1–3-р мөрний method болон type prototype дээр байхгүй, клиент эх код тэдгээрийг агуулаагүй үед тест ногоон болно.

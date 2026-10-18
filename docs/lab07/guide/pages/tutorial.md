@@ -60,7 +60,7 @@ node server.js
 Доорх файл 2–10-р алхмыг нэг удаагийн командаар давтана. Сервер ассан хэвээр байхад:
 
 ```
-node docs/guide/examples/book-french-session.mjs
+node docs/lab07/guide/examples/book-french-session.mjs
 ```
 
 Амжилттай бол `status` нь `completed`, `skill` нь `Франц хэл`, `credits` нь `5` гэж хэвлэнэ.

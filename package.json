@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "docs": "typedoc --treatWarningsAsErrors",
-    "test:docs": "node docs/sprint06/test_ai_hallucinations.js"
+    "test:docs": "node docs/lab06/test_ai_hallucinations.js"
   },
   "dependencies": {
     "redoc-express": "^2.1.3",
