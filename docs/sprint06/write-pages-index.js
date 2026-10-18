@@ -15,6 +15,7 @@ const html = `<!DOCTYPE html>
 <body>
   <h1>SkillSwap баримт</h1>
   <ul>
+    <li><a href="guide/">Tutorial, How-to, Reference</a></li>
     <li><a href="api/">JSDoc / TypeDoc API лавлагаа</a></li>
     <li><a href="redoc/">Redoc</a></li>
     <li><a href="swagger/">Swagger UI</a></li>
