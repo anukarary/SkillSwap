@@ -2,10 +2,6 @@
 
 /**
  * AI-ийн үүсгэсэн docstring 
- *
- * Энэ файлыг кодонд нэгтгээгүй. Bhatti аудитаар зассан хувилбар нь
- * manual_docstring.js болон lib/skillswap-client.js дээр байна.
- * Доорх зохиосон method, type-уудыг test_ai_hallucinations.js барина.
  */
 
 /**
