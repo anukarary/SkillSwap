@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Phase (b) — AI-ийн үүсгэсэн docstring ноорог.
+ * AI-ийн үүсгэсэн docstring 
  *
  * Энэ файлыг кодонд нэгтгээгүй. Bhatti аудитаар зассан хувилбар нь
  * manual_docstring.js болон lib/skillswap-client.js дээр байна.
