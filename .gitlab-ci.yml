@@ -1,6 +1,3 @@
-# SkillSwap баримт: TypeDoc (JSDoc) болон Lab 5-ын Redoc/Swagger.
-# GitLab Pages `public/` хавтсыг авна. typedoc анхааруулга дээр зогсоно.
-
 stages:
   - test
   - deploy
